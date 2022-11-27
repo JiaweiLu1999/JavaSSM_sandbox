@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiawei.mybatis.mapper.EmployeeMapper">
+    <select id="selectEmployeeById" resultType="com.jiawei.mybatis.pojo.Employee">
+        select
+            id,
+            last_name as lastName,
+            email,
+            salary
+        from employee
+        where id = #{id}
+    </select>
+</mapper>
