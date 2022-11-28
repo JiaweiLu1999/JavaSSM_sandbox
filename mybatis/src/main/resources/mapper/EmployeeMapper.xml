@@ -3,13 +3,91 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jiawei.mybatis.mapper.EmployeeMapper">
-    <select id="selectEmployeeById" resultType="com.jiawei.mybatis.pojo.Employee">
+    <select id="selectEmployeeById" resultType="employee">
         select
-            id,
-            last_name as lastName,
-            email,
-            salary
+        id,
+        last_name,
+        email,
+        salary
         from employee
         where id = #{id}
+    </select>
+
+    <insert id="insertEmployee" useGeneratedKeys="true" keyProperty="id">
+        insert into
+        employee(last_name, email, salary)
+        values (#{lastName}, #{email}, #{salary})
+    </insert>
+
+    <delete id="deleteEmployeeById">
+        delete
+        from employee
+        where id = #{id}
+    </delete>
+
+    <update id="updateEmployee">
+        update employee
+        set
+        last_name = #{lastName},
+        email = #{email},
+        salary = #{salary}
+        where
+        id = #{id}
+    </update>
+
+    <select id="selectAllEmployee" resultType="employee">
+        select *
+        from employee
+    </select>
+
+    <select id="selectAllEmployeeToMap" resultType="map">
+        select *
+        from employee
+    </select>
+
+    <resultMap id="empAndDeptResultMap" type="employee">
+        <id column="id" property="id"/>
+        <result column="last_name" property="lastName"/>
+        <result column="email" property="email"/>
+        <result column="salary" property="salary"/>
+
+        <association property="dept" javaType="department">
+            <id column="dept_id" property="deptId"/>
+            <result column="dept_name" property="deptName"/>
+        </association>
+
+
+    </resultMap>
+
+    <select id="selectEmployeeAndDeptById" resultMap="empAndDeptResultMap">
+        select e.id, e.last_name, e.email, e.salary, d.dept_id, d.dept_name
+        from employee e, department d
+        where e.dept_id = d.dept_id and e.id = #{id}
+    </select>
+
+    <resultMap id="empAndDeptResultMapStep" type="employee">
+        <id column="id" property="id"/>
+        <result column="last_name" property="lastName"/>
+        <result column="email" property="email"/>
+        <result column="salary" property="salary"/>
+
+        <association property="dept"
+                     column="dept_id"
+                     select="com.jiawei.mybatis.mapper.DepartmentMapper.selectDeptById"
+        />
+    </resultMap>
+
+    <select id="selectEmployeeAndDeptByIdStep" resultMap="empAndDeptResultMapStep">
+        select
+            id, last_name, email, salary, dept_id
+        from employee
+        where id = #{id}
+    </select>
+
+    <select id="selectEmployeeAndDeptByDeptIdStep" resultMap="empAndDeptResultMapStep">
+        select
+            id, last_name, email, salary, dept_id
+        from employee
+        where dept_id = #{dept_id}
     </select>
 </mapper>

@@ -37,4 +37,4 @@ build/
 ### Mac OS ###
 .DS_Store
 
-mybatis/src/main/resources/mybatis-config.xml
+mybatis/src/main/resources/db.properties
