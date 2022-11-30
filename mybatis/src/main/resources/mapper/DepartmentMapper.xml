@@ -13,7 +13,7 @@
     <resultMap id="selectDeptAndEmpByDeptIdMap" type="department">
         <id property="deptId" column="dept_id"/>
         <result property="deptName" column="dept_name"/>
-        <association property="employees" column="dept_id"
+        <collection property="employees" column="dept_id"
                      select="com.jiawei.mybatis.mapper.EmployeeMapper.selectEmployeeAndDeptByDeptIdStep"
         />
     </resultMap>

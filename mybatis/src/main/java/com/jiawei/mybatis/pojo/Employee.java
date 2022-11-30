@@ -1,6 +1,10 @@
 package com.jiawei.mybatis.pojo;
 
-public class Employee {
+import java.io.Serializable;
+
+public class Employee implements Serializable {
+
+    private static final long serialVersionUID = -1646502553472109075L;
     private Integer id;
     private String lastName;
     private String email;

@@ -11,6 +11,7 @@
     <modules>
         <module>maven</module>
         <module>mybatis</module>
+        <module>mbg</module>
     </modules>
 
     <properties>

@@ -10,11 +10,13 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 public class TestMybatis {
     String resource = "mybatis-config.xml";
+
     @Test
     public void testMybatisSelect() {
         try {
@@ -123,5 +125,26 @@ public class TestMybatis {
         DepartmentMapper mapper = session.getMapper(DepartmentMapper.class);
         Department department = mapper.selectDeptAndEmpByDeptId(1);
         System.out.println(department);
+    }
+
+    @Test
+    public void testMybatisDynamic() throws IOException {
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = factory.openSession();
+        EmployeeMapper mapper = session.getMapper(EmployeeMapper.class);
+        List<Employee> employees = mapper.selectEmpByOpr(new Employee(1, "lu", null, null, null));
+        System.out.println(employees);
+    }
+
+    @Test
+    public void testMybatisForeach() throws IOException {
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = factory.openSession();
+        EmployeeMapper mapper = session.getMapper(EmployeeMapper.class);
+        Integer[] arr = new Integer[]{1, 2, 5};
+        List<Employee> employees = mapper.selectEmpByIds(Arrays.asList(arr));
+        System.out.println(employees);
     }
 }

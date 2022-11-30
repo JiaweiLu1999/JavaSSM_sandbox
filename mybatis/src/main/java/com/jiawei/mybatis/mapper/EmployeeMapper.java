@@ -2,6 +2,7 @@ package com.jiawei.mybatis.mapper;
 
 import com.jiawei.mybatis.pojo.Employee;
 import org.apache.ibatis.annotations.MapKey;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -25,4 +26,8 @@ public interface EmployeeMapper {
     Employee selectEmployeeAndDeptByIdStep(int id);
 
     List<Employee> selectEmpByDeptId(int deptId);
+
+    List<Employee> selectEmpByOpr(Employee employee);
+
+    List<Employee> selectEmpByIds(@Param("ids") List<Integer> ids);
 }
