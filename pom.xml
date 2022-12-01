@@ -12,6 +12,7 @@
         <module>maven</module>
         <module>mybatis</module>
         <module>mbg</module>
+        <module>spring_hello</module>
     </modules>
 
     <properties>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <context:property-placeholder location="db.properties"/>
+
+    <bean id="factoryBean" class="com.jiawei.spring.factory.MyFactoryBean"/>
+
+    <bean id="processor" class="com.jiawei.spring.processor.MyPostProcessor"/>
+    <bean id="dataSource"
+          class="com.alibaba.druid.pool.DruidDataSource"
+          p:driverClassName="${db.driver}"
+          p:url="${db.url}"
+          p:username="${db.username}"
+          p:password="${db.password}"/>
+
+
+    <bean id="deptJava" class="com.jiawei.spring.pojo.Department"
+          p:deptId="1"
+          p:deptName="Java"/>
+    <bean id="empLu" class="com.jiawei.spring.pojo.Employee"
+          p:id="10"
+          p:lastName="lu"
+          p:email="123@gmail.com"
+          p:salary="200"
+          p:dept-ref="deptJava"/>
+
+    <util:list id="empList">
+        <ref bean="empLu"/>
+    </util:list>
+
+    <bean id="deptPython" class="com.jiawei.spring.pojo.Department"
+          p:deptId="2"
+          p:deptName="Python"
+          p:employees-ref="empList"/>
+
+    <util:map id="empMap">
+        <entry key="101" value-ref="empLu"/>
+    </util:map>
+</beans>

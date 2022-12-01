@@ -39,3 +39,4 @@ build/
 
 mybatis/src/main/resources/db.properties
 mbg/src/main/resources/db.properties
+spring_hello/src/main/resources/db.properties
