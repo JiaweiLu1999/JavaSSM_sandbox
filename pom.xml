@@ -13,6 +13,9 @@
         <module>mybatis</module>
         <module>mbg</module>
         <module>spring_hello</module>
+        <module>spring_aop</module>
+        <module>spring_jdbc</module>
+        <module>spring_transaction</module>
     </modules>
 
     <properties>
