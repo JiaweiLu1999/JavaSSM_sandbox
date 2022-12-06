@@ -1,5 +1,6 @@
 package com.jiawei.controller;
 
+import com.jiawei.pojo.Employee;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,8 +19,9 @@ public class EmpController {
     }
 
     @RequestMapping("/saveEmp")
-    public String saveEmp() {
+    public String saveEmp(Employee employee) {
         System.out.println("==> This is SaveEmp() method...");
+        System.out.println(employee);
         return SUCCESS;
     }
 

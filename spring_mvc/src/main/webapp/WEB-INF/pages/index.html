@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Home</title>
@@ -7,7 +7,24 @@
 <body>
 
 <a th:href="@{/HelloController/}">Hello World!</a><br/>
-<a th:href="@{/emp/}">To Employee Page</a>
+<a th:href="@{/emp/}">To Employee Page</a><br/>
+<a th:href="@{/testRequestParam(name='jiawei', age=10)}">Test Request Param</a><br/>
+
+<form th:action="@{/emp/saveEmp}" method="post">
+  <label>ID: <input type="text" name="id"></label><br/>
+  <label>Last name: <input type="text" name="lastName"></label><br/>
+  <label>Email: <input type="text" name="email"></label><br/>
+  <label>Salary: <input type="text" name="salary"></label><br/>
+  <input type="submit">
+</form>
+
+<h4>Cookie Related</h4>
+<a th:href="@{/setCookie}">Set Cookie</a><br/>
+<a th:href="@{/getCookie}">Get Cookie ID</a>
+
+<h4>Response Related</h4>
+<a th:href="@{/testModelAndView}">ModelAndView Response</a><br/>
+<a th:href="@{/testMap}">Map, Model, ModelMap Response</a>
 
 </body>
 </html>

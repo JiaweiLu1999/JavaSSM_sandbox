@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Employee Page</title>
+</head>
+<body>
+
+<div align="center">
+  <h3>Edit Employee Info</h3>
+  <form th:action="@{/employees}" method="post">
+    <input type="hidden" name="_method" value="PUT">
+    <input type="hidden" name="id" th:value="${employee.id}">
+    <label>Name: <input type="text" name="lastName" th:value="${employee.lastName}"></label><br/>
+    <label>Email: <input type="text" name="email" th:value="${employee.email}"></label><br/>
+    <label>Salary: <input type="text" name="salary" th:value="${employee.salary}"></label><br/>
+    <label>Department:
+      <select name="dept.deptId">
+        <option th:each="dept: ${departments}"
+                th:value="${dept.deptId}"
+                th:text="${dept.deptName}"
+                th:selected="${dept.deptId == employee.dept.deptId}"/>
+      </select>
+    </label><br/>
+    <input type="submit" value="Update">
+  </form>
+</div>
+
+</body>
+</html>

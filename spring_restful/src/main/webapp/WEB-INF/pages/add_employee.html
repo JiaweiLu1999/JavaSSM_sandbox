@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Employee Page</title>
+</head>
+<body>
+
+<div align="center">
+  <h3>Add Employee Info</h3>
+  <form th:action="@{/employees}" method="post">
+    <input type="hidden">
+    <label>Name: <input type="text" name="lastName"></label><br/>
+    <label>Email: <input type="text" name="email"></label><br/>
+    <label>Salary: <input type="text" name="salary"></label><br/>
+    <label>Department:
+      <select name="dept.deptId">
+        <option th:each="dept: ${departments}"
+                th:value="${dept.deptId}"
+                th:text="${dept.deptName}"/>
+      </select>
+    </label><br/>
+    <input type="submit">
+  </form>
+</div>
+</body>
+</html>

@@ -17,6 +17,7 @@
         <module>spring_jdbc</module>
         <module>spring_transaction</module>
         <module>spring_mvc</module>
+        <module>spring_restful</module>
     </modules>
 
     <properties>

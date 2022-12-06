@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <base th:href="@{/}"/>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript" src="static/vue.js"></script>
+</head>
+<body>
+
+<div id="app" align="center">
+  <h3>List of Employees</h3>
+  <table border="1" width="600px">
+    <tr>
+      <th>ID</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Salary</th>
+      <th>Dept Name</th>
+      <th>Opr</th>
+    </tr>
+
+    <tr align="center" th:each="emp: ${employees}">
+      <td th:text="${emp.id}"/>
+      <td th:text="${emp.lastName}"/>
+      <td th:text="${emp.email}"/>
+      <td th:text="${emp.salary}"/>
+      <td th:text="${emp.dept.deptName}"/>
+      <td>
+        <a th:href="@{/toUpdateEmp/}+${emp.id}">Edit</a>
+        <a th:href="@{/}" @click="deleteEmp">Delete</a>
+
+        <form id="delForm"
+              th:action="@{/employees/}+${emp.id}"
+              method="post">
+          <input type="hidden" name="_method" value="DELETE">
+        </form>
+      </td>
+
+    </tr>
+  </table>
+</div>
+
+<script type="text/javascript">
+  new Vue({
+      el: "#app",
+      data:{},
+      methods:{
+          deleteEmp() {
+              let formEle = document.getElementById("delForm");
+              formEle.submit();
+              event.preventDefault();
+          }
+      }
+
+  });
+</script>
+
+</body>
+</html>
