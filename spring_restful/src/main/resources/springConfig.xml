@@ -23,7 +23,13 @@
 
     </bean>
 
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="maxUploadSizePerFile" value="1024"/>
+    </bean>
+
     <mvc:view-controller path="/" view-name="index"/>
+    <mvc:view-controller path="/msgConv" view-name="msg_converter"/>
 
 
     <mvc:default-servlet-handler/>

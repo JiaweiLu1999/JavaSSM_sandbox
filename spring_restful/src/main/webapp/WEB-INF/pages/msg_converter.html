@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Message Converter Page</title>
+</head>
+<body>
+<h3>Test Request Body</h3>
+<form th:action="@{/testRequestBody}" method="post">
+  <label>Last Name: <input type="text" name="lastName"></label><br/>
+  <label>Email: <input type="text" name="email"></label><br/>
+  <input type="submit">
+</form>
+
+<h3>Test Http Entity</h3>
+<form th:action="@{/testHttpEntity}" method="post">
+  <label>Last Name: <input type="text" name="lastName"></label><br/>
+  <label>Email: <input type="text" name="email"></label><br/>
+  <input type="submit">
+</form>
+
+<h3>Test ResponseBody</h3>
+<a th:href="@{/testResponseBody}">Test ResponseBody</a><br/>
+<a th:href="@{/testJson}">Test ResponseBody deal with Json</a>
+</body>
+</html>
