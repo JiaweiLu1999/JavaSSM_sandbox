@@ -18,6 +18,7 @@
         <module>spring_transaction</module>
         <module>spring_mvc</module>
         <module>spring_restful</module>
+        <module>ssm</module>
     </modules>
 
     <properties>

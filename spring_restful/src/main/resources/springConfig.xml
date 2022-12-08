@@ -30,7 +30,20 @@
 
     <mvc:view-controller path="/" view-name="index"/>
     <mvc:view-controller path="/msgConv" view-name="msg_converter"/>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/testJson"/>
+            <ref bean="myInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.ArithmeticException">/error/error_arithmetic</prop>
+            </props>
+        </property>
+    </bean>
 
     <mvc:default-servlet-handler/>
     <mvc:annotation-driven/>

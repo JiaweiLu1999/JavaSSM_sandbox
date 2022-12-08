@@ -42,3 +42,4 @@ mbg/src/main/resources/db.properties
 spring_hello/src/main/resources/db.properties
 spring_jdbc/src/main/resources/db.properties
 spring_transaction/src/main/resources/db.properties
+ssm/src/main/resources/db.properties

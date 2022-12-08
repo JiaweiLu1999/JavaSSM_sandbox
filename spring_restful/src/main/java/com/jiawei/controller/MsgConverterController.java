@@ -37,7 +37,7 @@ public class MsgConverterController {
     @ResponseBody
     public Employee testJson() {
         System.out.println("Test json...");
-
+        int i = 1 / 0;
         return new Employee(1010, "lu", "jl5999@gmail.com", 100.0, null);
     }
 
